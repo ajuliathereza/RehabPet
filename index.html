@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rehab Pet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <aside>
+    <img src="logo.png" alt="Logo Yin-Yang" />
+    <h1>Rehab Pet</h1>
+    <nav>
+      <button onclick="mostrarSecao('inicio')">Início</button>
+      <button onclick="mostrarSecao('atendimentos')">Atendimentos</button>
+      <button onclick="mostrarSecao('sobre')">Sobre Mim</button>
+      <button onclick="mostrarSecao('contato')">Contato</button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="inicio" class="secao ativa">
+      <h2>🐾 Início • Conheça Nossos Atendimentos</h2>
+
+      <!-- Carrossel moderno com frases de efeito -->
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="/dog1.webp" alt="Fisioterapia" />
+      <div class="frase">"Movimento é vida: fisioterapia para recomeçar"</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="/dog2.jpg" alt="Acupuntura" />
+      <div class="frase">"Equilíbrio e bem-estar com acupuntura pet"</div>
+    </div>
+    <div class="swiper-slide">
+      <img src="/dog3.jpg" alt="Reabilitação" />
+      <div class="frase">"Cuidar do pós-operatório é amar também"</div>
+    </div>
+  </div>
+</div>
+
+
+      <h2 style="margin-top: 40px;">📰 Notícias do Mundo Pet</h2>
+      <div class="noticias">
+        <!-- Cards de notícia -->
+         <div class="noticias">
+  <div class="card-noticia">
+    <img src="/pet1.png" alt="Cão em tratamento" />
+    <h3>Fisioterapia ajuda na recuperação de cães idosos</h3>
+    <p>Saiba como sessões semanais de fisioterapia podem melhorar a qualidade de vida dos pets na terceira idade.</p>
+  </div>
+  <div class="card-noticia">
+    <img src="/pet2.png" alt="Pet relaxando com acupuntura" />
+    <h3>Acupuntura para ansiedade em pets</h3>
+    <p>Tratamento milenar ganha espaço no mundo veterinário com ótimos resultados em casos de estresse e ansiedade.</p>
+  </div>
+  <div class="card-noticia">
+    <img src="/dog2.jpg" alt="Gato em clínica" />
+    <h3>Recuperação pós-operatória com amor e cuidado</h3>
+    <p>Veja como o atendimento integrativo pode acelerar a recuperação e fortalecer o vínculo com o tutor.</p>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+    <section id="atendimentos" class="secao">
+      <h2>💉 Atendimentos</h2>
+      <ul>
+        <li>Fisioterapia Veterinária</li>
+        <li>Acupuntura para Pets</li>
+        <li>Reabilitação Pós-Cirúrgica</li>
+        <li>Tratamentos Integrativos</li>
+        <li>Consultas Personalizadas</li>
+      </ul>
+    </section>
+
+    <section id="sobre" class="secao">
+      <h2>👩‍⚕️ Sobre Mim</h2>
+      <p>
+        Sou uma veterinária dedicada, especializada em fisioterapia e acupuntura para animais. Ofereço atendimentos humanizados e terapêuticos para melhorar a saúde e qualidade de vida dos pets com carinho e profissionalismo.
+      </p>
+    </section>
+
+    <section id="contato" class="secao">
+      <h2>📞 Contato</h2>
+      <p>📞 (XX) XXXX-XXXX</p>
+      <p>📧 contato@veterinariayinyang.com</p>
+      <p>📍 Rua dos Animais Felizes, 123 - Petópolis</p>
+    </section>
+
+    <footer>
+      &copy; 2025 Clínica Yin Yang. Amor, cuidado e equilíbrio para seu pet.
+    </footer>
+  </main>
+
+  <script>
+    function mostrarSecao(id) {
+      const secoes = document.querySelectorAll('.secao');
+      secoes.forEach(secao => secao.classList.remove('ativa'));
+      document.getElementById(id).classList.add('ativa');
+    }
+
+    let posicaoAtual = 0;
+    function moverCarrossel(direcao) {
+      const container = document.getElementById('carrossel-imagens');
+      const total = container.children.length;
+      posicaoAtual += direcao;
+      if (posicaoAtual < 0) posicaoAtual = 0;
+      if (posicaoAtual > total - 1) posicaoAtual = total - 1;
+
+      const largura = container.children[0].offsetWidth + 30;
+      container.style.transform = `translateX(-${posicaoAtual * largura}px)`;
+    }
+  </script>
+  <!-- SwiperJS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+    grabCursor: true,
+  });
+</script>
+
+</body>
+</html>
