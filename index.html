@@ -2,136 +2,310 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rehab Pet</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rehab Pet - Clínica Veterinária</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --rosa-claro: #fddde6;
+      --coral: #f28c82;
+      --verde-claro: #cde4e1;
+      --bege: #f8f5f0;
+      --amarelo-claro: #f4e3b2;
+      --rosa-vivo: #f8a3c5;
+      --cinza-fundo: #f3f1ef;
+      --cinza-texto: #2c2c2c;
+      --sombra-card: rgba(242, 140, 130, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--cinza-fundo)
+        url('/images/background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--cinza-texto);
+      line-height: 1.5;
+    }
+
+    header {
+      background: rgba(255 255 255 / 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(0 0 0 / 0.1);
+      transition: background 0.3s ease;
+    }
+    header:hover {
+      background: rgba(255 255 255 / 1);
+      box-shadow: 0 3px 20px rgba(242 140 130 / 0.25);
+    }
+
+    header img {
+      height: 90px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: var(--coral);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #fff;
+      background-color: var(--rosa-vivo);
+      outline: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 6rem;
+      background: linear-gradient(
+          to bottom,
+          rgba(255 255 255 / 0.85),
+          rgba(248 163 197 / 0.15)
+        ),
+        var(--cinza-fundo)
+          url('/images/background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--cinza-texto);
+      box-shadow: inset 0 -60px 60px -40px var(--rosa-vivo);
+      border-radius: 0 0 60px 60px;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--rosa-vivo);
+      text-shadow: 1px 1px 6px rgba(248, 163, 197, 0.5);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #444;
+      font-weight: 500;
+    }
+    .hero a.button {
+      padding: 0.85rem 2.5rem;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 8px 15px rgba(242, 140, 130, 0.4);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      display: inline-block;
+      cursor: pointer;
+      user-select: none;
+    }
+    .hero a.button:hover,
+    .hero a.button:focus {
+      background: var(--rosa-vivo);
+      box-shadow: 0 12px 25px rgba(248, 163, 197, 0.6);
+      outline: none;
+    }
+
+    .services {
+      padding: 3rem 1rem 5rem;
+      background: rgba(255 255 255 / 0.95);
+      color: var(--cinza-texto);
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 30px;
+      box-shadow: 0 8px 18px rgba(242, 140, 130, 0.2);
+    }
+    .services h2 {
+      text-align: center;
+      color: var(--coral);
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 0.04em;
+      text-shadow: 1px 1px 2px rgba(242, 140, 130, 0.2);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+    }
+    .card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 12px 28px var(--sombra-card);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px var(--sombra-card);
+    }
+    .card img {
+      height: 80px;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 2px 2px rgba(242, 140, 130, 0.3));
+    }
+    .card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--rosa-vivo);
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #e9e5df;
+      text-align: center;
+      padding: 2rem;
+      color: #555;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      z-index: 200;
+      transition: background 0.3s ease;
+    }
+    .whatsapp-float:hover,
+    .whatsapp-float:focus {
+      background: #1ebe57;
+      outline: none;
+    }
+
+    /* Responsividade */
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      header img {
+        height: 75px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+        font-size: 1.1rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .services {
+        padding: 2rem 1rem 3rem;
+      }
+      .services h2 {
+        font-size: 2rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <aside>
-    <img src="logo.png" alt="Logo Yin-Yang" />
-    <h1>Rehab Pet</h1>
+  <header>
+    <img src="/images/logo.png" alt="Logo Rehab Pet" />
     <nav>
-      <button onclick="mostrarSecao('inicio')">Início</button>
-      <button onclick="mostrarSecao('atendimentos')">Atendimentos</button>
-      <button onclick="mostrarSecao('sobre')">Sobre Mim</button>
-      <button onclick="mostrarSecao('contato')">Contato</button>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Atendimentos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
     </nav>
-  </aside>
+  </header>
 
-  <main>
-    <section id="inicio" class="secao ativa">
-      <h2>🐾 Início • Conheça Nossos Atendimentos</h2>
+  <section class="hero" id="inicio">
+    <h1>Bem-vindo à Rehab Pet</h1>
+    <p>
+      Especialistas em reabilitação animal com carinho e cuidado. Sua clínica
+      veterinária de confiança.
+    </p>
+    <a href="https://wa.me/5551981166497" class="button" target="_blank"
+      >Agende pelo WhatsApp</a
+    >
+  </section>
 
-      <!-- Carrossel moderno com frases de efeito -->
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="dog1.webp" alt="Fisioterapia" />
-      <div class="frase">"Movimento é vida: fisioterapia para recomeçar"</div>
-    </div>
-    <div class="swiper-slide">
-      <img src="dog2.jpg" alt="Acupuntura" />
-      <div class="frase">"Equilíbrio e bem-estar com acupuntura pet"</div>
-    </div>
-    <div class="swiper-slide">
-      <img src="dog3.jpg" alt="Reabilitação" />
-      <div class="frase">"Cuidar do pós-operatório é amar também"</div>
-    </div>
-  </div>
-</div>
-
-
-      <h2 style="margin-top: 40px;">📰 Notícias do Mundo Pet</h2>
-      <div class="noticias">
-        <!-- Cards de notícia -->
-         <div class="noticias">
-  <div class="card-noticia">
-    <img src="pet1.png" alt="Cão em tratamento" />
-    <h3>Fisioterapia ajuda na recuperação de cães idosos</h3>
-    <p>Saiba como sessões semanais de fisioterapia podem melhorar a qualidade de vida dos pets na terceira idade.</p>
-  </div>
-  <div class="card-noticia">
-    <img src="pet2.png" alt="Pet relaxando com acupuntura" />
-    <h3>Acupuntura para ansiedade em pets</h3>
-    <p>Tratamento milenar ganha espaço no mundo veterinário com ótimos resultados em casos de estresse e ansiedade.</p>
-  </div>
-  <div class="card-noticia">
-    <img src="dog2.jpg" alt="Gato em clínica" />
-    <h3>Recuperação pós-operatória com amor e cuidado</h3>
-    <p>Veja como o atendimento integrativo pode acelerar a recuperação e fortalecer o vínculo com o tutor.</p>
-  </div>
-</div>
-
+  <section class="services" id="servicos">
+    <h2>Nossos Atendimentos</h2>
+    <div class="cards">
+      <div class="card" tabindex="0">
+        <img src="/images/icone1.png" alt="Ícone Fisioterapia" />
+        <h3>Fisioterapia</h3>
+        <p>Tratamentos personalizados para reabilitação motora e alívio de dores crônicas.</p>
       </div>
-    </section>
+      <div class="card" tabindex="0">
+        <img src="/images/icone2.png" alt="Ícone Acupuntura" />
+        <h3>Acupuntura</h3>
+        <p>Técnica milenar para promover o equilíbrio e bem-estar dos pets.</p>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="/images/icone3.png" alt="Ícone Neurologia" />
+        <h3>Reabilitação Neurológica</h3>
+        <p>Cuidados intensivos e estímulos para pets com disfunções neurológicas.</p>
+      </div>
+      
+    </div>
+  </section>
 
-    <section id="atendimentos" class="secao">
-      <h2>💉 Atendimentos</h2>
-      <ul>
-        <li>Fisioterapia Veterinária</li>
-        <li>Acupuntura para Pets</li>
-        <li>Reabilitação Pós-Cirúrgica</li>
-        <li>Tratamentos Integrativos</li>
-        <li>Consultas Personalizadas</li>
-      </ul>
-    </section>
+  <footer id="contato">
+    <p>&copy; 2025 Rehab Pet. Todos os direitos reservados.</p>
+  </footer>
 
-    <section id="sobre" class="secao">
-      <h2>👩‍⚕️ Sobre Mim</h2>
-      <p>
-        Sou uma veterinária dedicada, especializada em fisioterapia e acupuntura para animais. Ofereço atendimentos humanizados e terapêuticos para melhorar a saúde e qualidade de vida dos pets com carinho e profissionalismo.
-      </p>
-    </section>
-
-    <section id="contato" class="secao">
-      <h2>📞 Contato</h2>
-      <p>📞 (XX) XXXX-XXXX</p>
-      <p>📧 contato@veterinariayinyang.com</p>
-      <p>📍 Rua dos Animais Felizes, 123 - Petópolis</p>
-    </section>
-
-    <footer>
-      &copy; 2025 Clínica Yin Yang. Amor, cuidado e equilíbrio para seu pet.
-    </footer>
-  </main>
-
-  <script>
-    function mostrarSecao(id) {
-      const secoes = document.querySelectorAll('.secao');
-      secoes.forEach(secao => secao.classList.remove('ativa'));
-      document.getElementById(id).classList.add('ativa');
-    }
-
-    let posicaoAtual = 0;
-    function moverCarrossel(direcao) {
-      const container = document.getElementById('carrossel-imagens');
-      const total = container.children.length;
-      posicaoAtual += direcao;
-      if (posicaoAtual < 0) posicaoAtual = 0;
-      if (posicaoAtual > total - 1) posicaoAtual = total - 1;
-
-      const largura = container.children[0].offsetWidth + 30;
-      container.style.transform = `translateX(-${posicaoAtual * largura}px)`;
-    }
-  </script>
-  <!-- SwiperJS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-  const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    slidesPerView: 1,
-    spaceBetween: 20,
-    grabCursor: true,
-  });
-</script>
-
+  <a
+    href="https://wa.me/5551981166497"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="WhatsApp"
+    >💬</a
+  >
 </body>
 </html>
