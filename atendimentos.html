@@ -12,43 +12,63 @@
     <img src="images/logo.png" alt="Logo Rehab Pet" />
     <nav>
       <a href="index.html">Início</a>
-      <a href="atendimentos.html" class="active">Atendimentos</a>
+      <a href="atendimentos.html">Atendimentos</a>
+      <a href="blog.html">Blog</a>
       <a href="sobre.html">Sobre</a>
       <a href="contato.html">Contato</a>
     </nav>
   </header>
 
-  <main class="services">
-    <h1>Nossos Atendimentos</h1>
-    <p>Oferecemos terapias especializadas para reabilitação e bem-estar do seu pet. Conheça nossos principais serviços:</p>
+  <main class="atendimentos-principal">
+    <!-- Carrossel no topo -->
+    <section class="carousel">
+      <div class="carousel-container">
+        <div class="slide active">
+          <img src="/images/dog3.jpg" alt="Fisioterapia para pets" />
+        </div>
+        <div class="slide">
+          <img src="/images/dog2.jpg" alt="Acupuntura em cães" />
+        </div>
+        <div class="slide">
+          <img src="/images/dog1.webp" alt="Piscina terapêutica para pets" />
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+    </section>
 
-    <div class="cards">
-      <div class="card" tabindex="0">
-        <img src="images/icone1.png" alt="Ícone Fisioterapia" />
-        <h3>Fisioterapia Veterinária</h3>
-        <p>Tratamentos personalizados para reabilitação motora, alívio de dores e recuperação pós-cirúrgica.</p>
+    <!-- Introdução -->
+    <section class="intro">
+      <h1>Nossos Atendimentos</h1>
+      <p>Somos especialistas em reabilitação e bem-estar animal. Oferecemos terapias modernas, humanizadas e feitas sob medida para o seu pet. Conheça abaixo nossas áreas de atuação:</p>
+    </section>
+
+    <!-- Cards de Serviços -->
+    <section class="cards-servicos">
+      <div class="cards">
+        <div class="card" tabindex="0">
+          <img src="images/icone1.png" alt="Ícone Fisioterapia" />
+          <h3>Fisioterapia Veterinária</h3>
+          <p>Reabilitação motora, alívio de dores e recuperação pós-cirúrgica.</p>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/icone2.png" alt="Ícone Acupuntura" />
+          <h3>Acupuntura</h3>
+          <p>Equilíbrio e alívio de dores crônicas em cães e gatos.</p>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/icone3.png" alt="Ícone Neurologia" />
+          <h3>Reabilitação Neurológica</h3>
+          <p>Tratamento para pets com sequelas neurológicas como AVC e hérnias.</p>
+        </div>
+        <div class="card" tabindex="0">
+          <img src="images/icone4.png" alt="Ícone Hidroterapia" />
+          <h3>Hidroterapia</h3>
+          <p>Exercícios terapêuticos em piscina para fortalecer e reabilitar.</p>
+        </div>
+        
       </div>
-      <div class="card" tabindex="0">
-        <img src="images/icone2.png" alt="Ícone Acupuntura" />
-        <h3>Acupuntura</h3>
-        <p>Terapia milenar que promove equilíbrio e alívio de dores crônicas em cães e gatos.</p>
-      </div>
-      <div class="card" tabindex="0">
-        <img src="images/icone3.png" alt="Ícone Neurologia" />
-        <h3>Reabilitação Neurológica</h3>
-        <p>Estímulos direcionados para pets com disfunções neurológicas, como sequelas de AVC e hérnias.</p>
-      </div>
-      <div class="card" tabindex="0">
-        <img src="images/icone4.png" alt="Ícone Hidroterapia" />
-        <h3>Hidroterapia</h3>
-        <p>Exercícios em piscina terapêutica para fortalecer musculatura e recuperar movimentos.</p>
-      </div>
-      <div class="card" tabindex="0">
-        <img src="images/icone5.png" alt="Ícone Laserterapia" />
-        <h3>Laserterapia</h3>
-        <p>Tratamento com laser para reduzir inflamações, acelerar cicatrizações e aliviar dores.</p>
-      </div>
-    </div>
+    </section>
   </main>
 
   <footer>
@@ -56,5 +76,35 @@
   </footer>
 
   <a href="https://wa.me/5551981166497" class="whatsapp-float" target="_blank" aria-label="WhatsApp">💬</a>
+
+  <script>
+
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+}
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+}
+
+function prevSlide() {
+  slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+  showSlide(slideIndex);
+}
+
+nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevSlide);
+
+setInterval(nextSlide, 5000);
+showSlide(slideIndex);
+</script>
 </body>
 </html>
