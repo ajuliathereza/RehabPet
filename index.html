@@ -13,15 +13,23 @@
 </head>
 <body>
   <header>
-    <img src="images/logo.png" alt="Logo Rehab Pet" />
-    <nav>
-      <a href="index.html">Início</a>
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo" />
+    <span>Rehab Pet</span>
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <nav class="menu" id="menu">
+    <a href="index.html">Início</a>
       <a href="atendimentos.html">Atendimentos</a>
       <a href="blog.html">Blog</a>
       <a href="sobre.html">Sobre</a>
       <a href="contato.html">Contato</a>
-    </nav>
-  </header>
+  </nav>
+</header>
+
+
 
   <section class="hero">
     <h1>Bem-vindo à Rehab Pet</h1>
@@ -58,6 +66,16 @@
       <p>&copy; 2025 Rehab Pet. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+</script>
+
 
   <a href="https://wa.me/5551981166497" class="whatsapp-float" target="_blank" aria-label="WhatsApp">💬</a>
 </body>
