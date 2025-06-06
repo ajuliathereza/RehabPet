@@ -331,3 +331,50 @@ a {
   }
 }
 
+
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #823c33;
+  cursor: pointer;
+}
+
+/* Menu padrão em telas grandes */
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    background-color: #fffaf7;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    z-index: 999;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .top-bar {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+

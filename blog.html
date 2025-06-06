@@ -12,10 +12,16 @@
 </head>
 <body>
   <body class="dark-mode"></body>
-  <header>
+  <header class="site-header">
   <div class="container top-bar">
     <img src="images/logo.png" alt="Logo Rehab Pet" class="logo" />
-    <nav class="nav">
+    
+    <!-- Botão hamburguer para mobile -->
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav id="menu" class="nav">
       <a href="index.html">Início</a>
       <a href="atendimentos.html">Atendimentos</a>
       <a href="blog.html" class="active">Blog</a>
@@ -24,6 +30,7 @@
     </nav>
   </div>
 </header>
+
 
 
   <main class="blog-main container">
@@ -126,6 +133,7 @@
     menu.classList.toggle('open');
   });
 </script>
+
   <a href="https://wa.me/5551981166497" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
