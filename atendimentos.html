@@ -139,6 +139,15 @@ prevBtn.addEventListener("click", prevSlide);
 
 setInterval(nextSlide, 5000);
 showSlide(slideIndex);
+
+
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+
 </script>
 </body>
 </html>
